@@ -38,17 +38,17 @@ export default class Calculadora{
     static imc(peso, altura) {
         let result = peso / altura ** 2
         if (result < 18.5) {
-            return 'A classificação do seu IMC é "Magreza"'
+            return 'Magreza'
         } else if (result >= 18.5 && result < 25) {
-            return 'A classificação do seu IMC é "Normal"'
+            return 'Normal'
         } else if (result >= 25 && result < 30) {
-            return 'A classificação do seu IMC é "Sobrepeso"'
+            return 'Sobrepeso'
         } else if (result >= 30 && result < 35) {
-            return 'A classificação do seu IMC é "Obesidade grau I"'
+            return 'Obesidade grau I'
         } else if (result >= 35 && result < 40) {
-            return 'A classificação do seu IMC é "Obesidade grau II"'
+            return 'Obesidade grau II'
         } else {
-            return 'A classificação do seu IMC é "Obesidade grau III"'
+            return 'Obesidade grau III'
         }
     }
 
