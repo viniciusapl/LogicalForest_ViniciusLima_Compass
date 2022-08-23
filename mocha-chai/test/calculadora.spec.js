@@ -32,6 +32,14 @@ describe('Testes de subtração', () => {
         let resultado = Calculadora.sub(6, 2)
         expect(resultado).to.be.eq(4)
     })   
+    it('Deve subtrair -11 e -7 resultando em -18', () => {
+        let resultado = Calculadora.sub(-7, -11)
+        expect(resultado).to.be.eq(-18)
+    })   
+    it('Deve subtrair 7.5 e 9 resultando em -1.5', () => {
+        let resultado = Calculadora.sub(7.5, 9)
+        expect(resultado).to.be.eq(-1.5)
+    })   
 })
 
 describe('Testes de multiplicação', () => {
@@ -39,9 +47,17 @@ describe('Testes de multiplicação', () => {
         let resultado = Calculadora.mult(9, 5)
         expect(resultado).to.be.eq(45)
     })   
-    it('Deve multiplicar 6 por 2 resultando em 12', () => {
-        let resultado = Calculadora.mult(6, 2)
-        expect(resultado).to.be.eq(12)
+    it('Deve multiplicar 6 por -2 resultando em -12', () => {
+        let resultado = Calculadora.mult(6, -2)
+        expect(resultado).to.be.eq(-12)
+    })   
+    it('Deve multiplicar -7 por -5 resultando em 35', () => {
+        let resultado = Calculadora.mult(-7,-5)
+        expect(resultado).to.be.eq(35)
+    })   
+    it('Deve multiplicar 8.7 por -2 resultando em -17.4', () => {
+        let resultado = Calculadora.mult(8.7, -2)
+        expect(resultado).to.be.eq(-17.4)
     })   
 })
 
@@ -54,6 +70,14 @@ describe('Testes de divisão', () => {
         let resultado = Calculadora.div(6, 2)
         expect(resultado).to.be.eq(3)
     })   
+    it('Deve dividir 3 por -2 resultando em -1.5', () => {
+        let resultado = Calculadora.div(3, -2)
+        expect(resultado).to.be.eq(-1.5)
+    })   
+    it('Deve dividir 10 por 2.5 resultando em 4', () => {
+        let resultado = Calculadora.div(10, 2.5)
+        expect(resultado).to.be.eq(4)
+    })   
 })
 
 describe('Testes de potência', () => {
@@ -65,11 +89,31 @@ describe('Testes de potência', () => {
         let resultado = Calculadora.pot(2, 4)
         expect(resultado).to.be.eq(16)
     })
+    it('Deve realizar a potência de 2 por -2 resultando em 0.25', () => {
+        let resultado = Calculadora.pot(2, -2)
+        expect(resultado).to.be.eq(0.25)
+    })
+    it('Deve realizar a potência de -5 por 3 resultando em -125', () => {
+        let resultado = Calculadora.pot(2, 4)
+        expect(resultado).to.be.eq(16)
+    })
 })
 
 describe('Testes de radiciação', () => {
     it('Deve realizar a radiciação de 81 com índice 2 resultando em 9', () => {
         let resultado = Calculadora.rad(81, 2)
+        expect(resultado).to.be.eq(9)
+    })
+    it('Deve realizar a radiciação de 81 com índice 2 resultando em 9', () => {
+        let resultado = Calculadora.rad(81, 2)
+        expect(resultado).to.be.eq(9)
+    })
+    it('Deve realizar a radiciação de 81 com índice 2 resultando em 9', () => {
+        let resultado = Calculadora.rad(-81, 2)
+        expect(resultado).to.be.eq(NaN)
+    })
+    it.only('Deve realizar a radiciação de 81 com índice 2 resultando em 9', () => {
+        let resultado = Calculadora.rad(81, -2)
         expect(resultado).to.be.eq(9)
     })
 })
