@@ -2,6 +2,7 @@ import assert from 'assert'
 import chai from 'chai'
 import exp from 'constants'
 import Calculadora from '../src/Calculadora.js'
+import calcMedia from '../src/Calculadora.js'
 
 const expect = chai.expect
 
@@ -33,11 +34,11 @@ describe('Testes de subtração', () => {
         let resultado = Calculadora.sub(6, 2)
         expect(resultado).to.be.eq(4)
     })   
-    it('Deve subtrair 7.5 e 9 resultando em -1.5', () => {
-        let resultado = Calculadora.sub(7.5, 7.4)
-        expect((resultado.toFixed(1))).to.be.eq(0.1)
+    it('Deve subtrair 7.5 e 7.4 resultando em 0.1', () => {
+        let resultado = Calculadora.sub(7.8, 7.7)
+        expect(parseFloat(resultado.toFixed(1))).to.be.eq(0.1)
     })   
-    it('Deve subtrair 7.5 e 9 resultando em -1.5', () => {
+    it('Deve subtrair -4 e 6 resultando em -10', () => {
         let resultado = Calculadora.sub(-4, 6)
         expect(resultado).to.be.eq(-10)
     })
@@ -95,8 +96,8 @@ describe('Testes de potência', () => {
         expect(resultado).to.be.eq(0.25)
     })
     it('Deve realizar a potência de -5 por 3 resultando em -125', () => {
-        let resultado = Calculadora.pot(2, 4)
-        expect(resultado).to.be.eq(16)
+        let resultado = Calculadora.pot(-5, 3)
+        expect(resultado).to.be.eq(-125)
     })
 })
 
@@ -109,10 +110,13 @@ describe('Testes de radiciação', () => {
         let resultado = Calculadora.rad(-81, 2)
         expect(resultado).to.be.NaN
     })
-
 })
 
-describe.only('Testes de média de 4 notas, onde a média necessária para aprovação é 6', () => {
+/*describe.only('Testes de média de 4 notas, onde a média necessária para aprovação é 6', () => {
+    it('Tendo as notas 2, 3, 7 e 8 a média é 5'), () => {
+        let resultado = Calculadora.aprove(Calculadora.mediaFinal(2, 3, 7, 8))
+        expect(resultado).to.be.eq(5)
+    }
     it('Tendo as notas 2, 3, 7 e 8 a média é 5, resultando em "Reprovado"', () => {
         let resultado = Calculadora.mediaFinal(2, 3, 7, 8)
         expect(resultado).to.be.eq('Reprovado')
@@ -133,4 +137,23 @@ describe.only('Testes de média de 4 notas, onde a média necessária para aprov
         let resultado = Calculadora.mediaFinal(5, 9, -7, 15)
         expect(resultado).to.be.eq("ERRO: Insira um valor entre 0 a 10")
     })
+})*/
+
+describe.only('Teste de verificação do valor de média', () => {
+    it('Valores 5, 2, 3, 6 resultando na média 4', () => {
+        let resultado = Calculadora.mediaFinal(5, 2, 3, 6)
+        expect(resultado).to.be.eq(4)
+    })
+    it('Valores 5, 2, 3, 6 resultando na média 4 com o aluno reprovado', () => {
+        let resultado = Calculadora.aprove(5,2,3,6)
+        expect(resultado).to.be.eq('Reprovado')
+    })
+/*    it('Confirmação da aprovação', () => {
+        let resultado = Calculadora.aprove(Calculadora.mediaFinal(5, 2, 3, 6))
+        expect(resultado).to.be.eq('Reprovado')
+    })*/
 })
+
+/*describe('Testes de verificação do Índice de Massa Corporal (IMC)', () => {
+    it('Tendo uma pessoa com a altura de 1,80m e 80kg')
+})*/
