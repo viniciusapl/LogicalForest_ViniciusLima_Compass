@@ -1,5 +1,6 @@
 import assert from 'assert'
 import chai from 'chai'
+import exp from 'constants'
 import Calculadora from '../src/Calculadora.js'
 
 const expect = chai.expect
@@ -33,9 +34,13 @@ describe('Testes de subtração', () => {
         expect(resultado).to.be.eq(4)
     })   
     it('Deve subtrair 7.5 e 9 resultando em -1.5', () => {
-        let resultado = Calculadora.sub(7.5, 9)
-        expect(resultado).to.be.eq(-1.5)
+        let resultado = Calculadora.sub(7.5, 7.4)
+        expect((resultado.toFixed(1))).to.be.eq(0.1)
     })   
+    it('Deve subtrair 7.5 e 9 resultando em -1.5', () => {
+        let resultado = Calculadora.sub(-4, 6)
+        expect(resultado).to.be.eq(-10)
+    })
 })
 
 describe('Testes de multiplicação', () => {
@@ -100,14 +105,14 @@ describe('Testes de radiciação', () => {
         let resultado = Calculadora.rad(81, 2)
         expect(resultado).to.be.eq(9)
     })
-    it('Deve realizar a radiciação de 81 com índice 2 resultando em 9', () => {
+    it('Deve realizar a radiciação de -81 com índice 2 resultando em 9', () => {
         let resultado = Calculadora.rad(-81, 2)
-        expect(resultado).toString('NaN')   /* Verificar o pq só funciona se transformar o NaN em string */
+        expect(resultado).to.be.NaN
     })
 
 })
 
-describe('Testes de média de 4 notas, onde a média necessária para aprovação é 6', () => {
+describe.only('Testes de média de 4 notas, onde a média necessária para aprovação é 6', () => {
     it('Tendo as notas 2, 3, 7 e 8 a média é 5, resultando em "Reprovado"', () => {
         let resultado = Calculadora.mediaFinal(2, 3, 7, 8)
         expect(resultado).to.be.eq('Reprovado')
@@ -116,8 +121,16 @@ describe('Testes de média de 4 notas, onde a média necessária para aprovaçã
         let resultado = Calculadora.mediaFinal(6, 7, 9, 10)
         expect(resultado).to.be.eq('Aprovado')
     })
-    it('Tendo as notas 10 e 10 faltam 2 valores para o cálculo, resultando em "Por favor, insira todas as quatro notas"', () =>{
+    it('Tendo os valores "a", 3, 7 e 8 a média não será possível de ser calculada, resultando em uma mensagem de erro', () => {
+        let resultado = Calculadora.mediaFinal('a', 2, 3, 7)
+        expect(resultado).to.be.eq('ERRO: Insira um número entre 0 e 10')
+    })
+    it('Tendo as notas 10 e 10 faltam 2 valores para o cálculo, resultando em uma mensagem de erro', () =>{
         let resultado = Calculadora.mediaFinal(10, 10)
-        expect(resultado).to.be.eq("Por favor, insira todas as quatro notas")
+        expect(resultado).to.be.eq("ERRO: Por favor, insira todas as quatro notas")
+    })
+    it('Tendo um valor fora do intervalo 0 e 10 entre as notas, resultando em uma mensagem de erro', () => {
+        let resultado = Calculadora.mediaFinal(5, 9, -7, 15)
+        expect(resultado).to.be.eq("ERRO: Insira um valor entre 0 a 10")
     })
 })

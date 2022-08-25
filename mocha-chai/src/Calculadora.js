@@ -25,15 +25,28 @@ export default class Calculadora{
     };
     
     static mediaFinal(a, b, c, d) {
-        let mediaFinal = (a + b + c + d) / 4;
+        let media = (a + b + c + d) / 4;
         if (a === undefined || b === undefined || c === undefined || d === undefined) {
-            return "Por favor, insira todas as quatro notas";
-        } else if (mediaFinal < 6){
+            return "ERRO: Por favor, insira todas as quatro notas";
+        } else if (a < 0 || a > 10 || b < 0 || b > 10 || c < 0 || c > 10 || d < 0 || d > 10) {
+            return "ERRO: Insira um valor entre 0 a 10"
+        } else if (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d)) {
+            return "ERRO: Insira um número entre 0 e 10"
+        } else if (media < 6){
             return "Reprovado"
         } else {
             return "Aprovado"
         }
     }
+
+
+
+
+
+
+
+
+
 
     static imc(peso, altura) {
         let result = peso / altura ** 2

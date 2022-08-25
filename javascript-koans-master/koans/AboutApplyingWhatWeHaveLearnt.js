@@ -41,16 +41,9 @@ describe("About Applying What We Have Learnt", function() {
 
       /* solve using filter() & all() / any() */
 
-      var noNuts = _(products.containsNuts).filter(function(x){return x === false});
-
-      var noM = function (x) {return x !== "mushroom"};
-
-      var noMushrooms = _(products.ingredients).all(noM);
-
       
 
-      productsICanEat = noMushrooms && noNuts
-      expect(productsICanEat.length).toBe(1);
+      expect(productsICanEat.length).toBe(FILL_ME_IN);
   });
 
   /*********************************************************************************/
