@@ -1,5 +1,6 @@
 export default class Calculadora{
 
+//FUNÇÕES DE OPERAÇÕES BÁSICAS
     //Função para somar
     static soma(a, b) {
         return (a + b);
@@ -30,7 +31,9 @@ export default class Calculadora{
         return (a ** (1 / b));
     }
 
-//FUNÇÕES DE VALIDAÇÃO PARA A CALCULADORA DE MÉDIA
+
+//FUNÇÕES USADAS APENAS PARA A VALIDAÇÃO DA CALCULADORA DE MÉDIA
+
     //Função para validação de intervalo entre 0 e 10
     static entre0e10 (x) {
         return (x < 0 || x > 10);
@@ -41,16 +44,17 @@ export default class Calculadora{
         return (isNaN(x));
     }
 
-//Função para o cálculo da média
+//CALCULADORA DE MÉDIA
+    //Função para o cálculo da média
     static mediaFinal(...args) { 
-        //Coloquei as notas dentro de um array com nome 'notas'
+        //Coloquei os valores dentro de um array
         let notas = [...args];
 
-        //Armazenei a soma das notas dentro de outra variável
+        //Armazenei a soma dos valores dentro de outra variável
         let somaNotas = notas.reduce((a, b) => this.soma(a, b), 0);
 
-        //Validação das notas
-        if (notas.some(this.entre0e10)) {
+        //Validação dos valores usando as funções que criei lá em cima
+        if (notas.some(this.entre0e10)) { //Aqui usei a função nativa .some, ela vai passar a função de validação por todos os elementos do array e retornar true se o número não estiver entre o intervalo 0 e 10, se estive tudo ok ela retorna false
             return ("ERRO: Insira um VALOR entre 0 a 10");
         } else if (notas.some(this.naoENum)) {
             return ("ERRO: Insira um NÚMERO entre 0 e 10");
@@ -62,15 +66,16 @@ export default class Calculadora{
 //Função para verificar se aluno foi aprovado ou reprovado
     static aprov(...args) {
         //Armazenei o resultado do cálculo da média dentro da variável média
-        let media = this.mediaFinal(...args)
-        //Verifiquei se a media foi o necessário para aprovar ou resultou em reprova
-        if (media < 6 ) {
-            return 'Reprovado'
+        let media = this.mediaFinal(...args);
+        //Aqui é pra confirmar se a validação da função mediaFinal não resultou em alguma mensagem de erro *aqui foi encontrado um bug durante os testes finais*
+        if (isNaN(media)) {
+            return media;
+        } else if (media < 6 ) {
+            return 'Reprovado'//Verifiquei se a media foi o necessário para aprovar ou resultou em reprova
         } else {
-            return 'Aprovado'
+            return 'Aprovado';
         }
     }
-
 }
 
 
