@@ -71,9 +71,9 @@ describe('Testes de divisão', () => {
         let resultado = Calculadora.div(50, 5);
         expect(resultado).to.be.eq(10);
     });
-    it('Deve dividir 6 por 2 resultando em 3', () => {
-        let resultado = Calculadora.div(6, 2);
-        expect(resultado).to.be.eq(3);
+    it('Deve dividir -6 por 2 resultando em 3', () => {
+        let resultado = Calculadora.div(-6, 2);
+        expect(resultado).to.be.eq(-3);
     });
     it('Deve dividir 3 por -2 resultando em -1.5', () => {
         let resultado = Calculadora.div(3, -2);
@@ -190,7 +190,7 @@ describe('Teste de cálculo de média simples informando se o aluno foi aprovado
         expect(resultado).to.be.eq('Aprovado');
     });
 
-    //*ESSES TESTES FIZ APENAS PARA VERIFICAR SE CONSEGUIRIA CONCATENAR OS RESULTADOS NO CASO DE TESTE*
+    //*ESSES TESTES FIZ APENAS PARA VERIFICAR SE CONSEGUIRIA CONCATENAR OS RESULTADOS DA CHAMADA DAS FUNÇÕES NO ENUNCIADO DO CASO DE TESTE*
     it('Tendo as notas 6, 7, 9 e 10, a média é ' + Calculadora.mediaFinal(6, 7, 9, 10, 4) + ', resultando em "' + Calculadora.aprov(6, 7, 9, 10, 4) + '"', () => {
         let resultado = Calculadora.aprov(6, 7, 9, 10, 4);
         expect(resultado).to.be.eq('Aprovado');
